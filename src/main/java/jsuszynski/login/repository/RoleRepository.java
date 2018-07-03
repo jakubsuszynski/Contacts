@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 
 @Singleton
 public class RoleRepository {
-    @PersistenceContext(unitName = "hypefit-auth")
+    @PersistenceContext(unitName = "contacts")
     private EntityManager entityManager;
 
 

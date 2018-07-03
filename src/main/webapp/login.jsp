@@ -4,7 +4,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Strona główna</title>
+    <title>Zaloguj się</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
@@ -22,15 +22,29 @@
                 <a href="/logout">Logout</a>
             </c:when>
             <c:otherwise>
-                <a href="login.jsp">Login</a>
-                <a href="register.jsp">Register</a>
+                <a href="/login.jsp">Login</a>
+                <a href="/register.jsp">Register</a>
 
             </c:otherwise>
         </c:choose>
     </div>
     <div class="content">
 
-        <a href="categories">Przejdź do wyboru kategorii</a>
+        <h2>Login</h2>
+
+        ${errorMessage}
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label>Login</label>
+                <input type="text" class="form-control" name="login" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+
 
 
     </div>

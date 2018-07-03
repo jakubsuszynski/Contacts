@@ -11,7 +11,7 @@ import java.util.List;
 
 @Singleton
 public class UsersRepository {
-    @PersistenceContext(unitName = "hypefit-auth")
+    @PersistenceContext(unitName = "contacts")
     private EntityManager entityManager;
 
     public User findUserByLogin(String login) {

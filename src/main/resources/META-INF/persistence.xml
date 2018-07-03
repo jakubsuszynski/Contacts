@@ -5,9 +5,9 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="hypefit-auth">
+    <persistence-unit name="contacts">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:/hypefit-auth</jta-data-source>
+        <jta-data-source>java:/contacts</jta-data-source>
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
