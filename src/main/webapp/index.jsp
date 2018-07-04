@@ -30,7 +30,6 @@
         ${message}
         ${errorMessage}
 
-        <a href="categories">Przejdź do wyboru kategorii</a>
 
 
     </div>

@@ -40,7 +40,7 @@
                 <label>Hasło</label>
                 <input type="password" class="form-control" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Zaloguj</button>
         </form>
 
 
