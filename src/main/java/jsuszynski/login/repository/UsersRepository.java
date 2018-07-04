@@ -19,15 +19,10 @@ public class UsersRepository {
                 .getSingleResult();
     }
 
-    public User findUserByEmail(String email) {
-        return (User) entityManager.createQuery("FROM User u WHERE u.email=:email")
-                .setParameter("email", email)
-                .getSingleResult();
-    }
 
-    public boolean doesExist(String login, String email) {
-        List results = entityManager.createQuery("FROM User u WHERE u.email=:email OR u.login=:login")
-                .setParameter("email", email).setParameter("login", login).getResultList();
+    public boolean doesExist(String login) {
+        List results = entityManager.createQuery("FROM User u WHERE  u.login=:login")
+               .setParameter("login", login).getResultList();
         return !results.isEmpty();
 
     }

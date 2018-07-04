@@ -18,8 +18,6 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    public static final String LOGIN = "login";
-    public static final String EMAIL = "email";
     @Inject
     private UsersRepository usersRepository;
     @Inject
@@ -36,35 +34,12 @@ public class RegisterServlet extends HttpServlet {
         return;
     }
 
-    private void registerUserWithRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        usersRepository.register(new User(req.getParameter(LOGIN), PasswordHash.hashPassword(req.getParameter("password"))
-                , req.getParameter(EMAIL)
-                , req.getParameter("name")
-                , req.getParameter("surname")));
-
-        User user = usersRepository.findUserByLogin(req.getParameter(LOGIN));
-
-        roleRepository.register(new Role(user.getLogin()
-                , "user"
-                , "user"
-                , user.getId()));
-
-        req.setAttribute("message", "User registered successfully");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
-
-        requestDispatcher.forward(req, resp);
-    }
-
     private boolean areFieldsEmpty(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (req.getParameter(LOGIN).isEmpty()
-                || req.getParameter("password").isEmpty()
-                || req.getParameter(EMAIL).isEmpty()
-                || req.getParameter("name").isEmpty()
-                || req.getParameter("surname").isEmpty()) {
+        if (req.getParameter("login").isEmpty() //check if user has left some fields empty
+                || req.getParameter("password").isEmpty() ){
 
-            req.setAttribute("errorMessage", "Provide all data");
+            req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
             requestDispatcher.forward(req, resp);
             return true;
@@ -75,10 +50,10 @@ public class RegisterServlet extends HttpServlet {
 
     private boolean doesUserExist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (usersRepository.doesExist(req.getParameter(LOGIN), req.getParameter(EMAIL))) {
+        if (usersRepository.doesExist(req.getParameter("login"))) { //check if user already exists
 
 
-            req.setAttribute("errorMessage", "User with provided login or email already exists.");
+            req.setAttribute("errorMessage", "Użytkownik z podanym loginem istnieje");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
             requestDispatcher.forward(req, resp);
 
@@ -86,5 +61,22 @@ public class RegisterServlet extends HttpServlet {
         }
 
         return false;
+    }
+
+    private void registerUserWithRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        usersRepository.register(new User(req.getParameter("login"), PasswordHash.hashPassword(req.getParameter("password")))); //add user to db
+
+        User user = usersRepository.findUserByLogin(req.getParameter("login"));
+
+        roleRepository.register(new Role(user.getLogin() //add role to db with new users login and id
+                , "user"
+                , "user"
+                , user.getId()));
+
+        req.setAttribute("message", "Użytkownik zarejestrowany pomyślnie");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
+
+        requestDispatcher.forward(req, resp);
     }
 }

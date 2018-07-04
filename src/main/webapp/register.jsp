@@ -12,24 +12,22 @@
 </head>
 <body>
 <div class="container">
-    <h2>Englishman</h2>
-    ${message}
-    ${errorMessage}
+    <h2>Contacts</h2>
     <div class="navbar">
         <c:choose>
             <c:when test="${not empty user}">
                 ${user.login}
-                <a href="/logout">Logout</a>
+                <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>
                 <a href="login.jsp">Login</a>
-                <a href="register.jsp">Register</a>
+                <a href="register.jsp">Rejestracja</a>
             </c:otherwise>
         </c:choose>
     </div>
     <div class="content">
-        <h2>Register</h2>
-
+        <h2>Rejestracja</h2>
+        ${message}
         ${errorMessage}
         <form action="/register" method="POST">
             <div class="form-group">
@@ -39,18 +37,6 @@
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" class="form-control" name="password" required>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="email" required>
-            </div>
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name" required>
-            </div>
-            <div class="form-group">
-                <label>Surname</label>
-                <input type="text" class="form-control" name="surname" required>
             </div>
             <button type="submit" class="btn btn-primary">Sign up</button>
         </form>

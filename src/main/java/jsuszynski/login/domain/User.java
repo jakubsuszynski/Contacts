@@ -13,26 +13,17 @@ public class User {
     private Long id;
     private String login;
     private String password;
-    private String email;
-    private String name;
-    private String surname;
 
 
-    public User(String login, String email) {
-        this.login = login;
-        this.email = email;
-    }
+
 
     public User() {
 
     }
 
-    public User(String login, String password, String email, String name, String surname) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.email = email;
-        this.name = name;
-        this.surname = surname;
     }
 
 
@@ -58,27 +49,4 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 }
