@@ -17,7 +17,7 @@
     <div class="navbar">
         <c:choose>
             <c:when test="${not empty user}">
-                ${user.login}
+                Zalogowano jako ${user.login}
                 <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>

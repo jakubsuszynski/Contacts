@@ -9,6 +9,7 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <div class="container">
@@ -16,7 +17,7 @@
     <div class="navbar">
         <c:choose>
             <c:when test="${not empty user}">
-                ${user.login}
+               Zalogowano jako ${user.login}
                 <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>

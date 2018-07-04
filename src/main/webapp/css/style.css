@@ -5,3 +5,11 @@ ul {
 #passwordStrengthText {
     color: red;
 }
+
+body {
+    padding-top: 5%;
+}
+
+.container {
+    padding-top: 3%;
+}

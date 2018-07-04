@@ -1,19 +1,20 @@
-var password = document.getElementById('password');
-var registerButton = document.getElementById('registerButton');
-var text = document.getElementById('passwordStrengthText');
-var value = password.value;
+let password = $('#password');
+let registerButton = $('#registerButton');
+let text = $('#passwordStrengthText');
+let value = password.val();
 if (value === "") {
-    registerButton.disabled = true;
+    registerButton.prop('disabled',true);
 }
 
-password.addEventListener('input', function () {
-    var value = password.value;
+password.on('input', function () {
+    let value = $(this).val();
     if (value.length < 4 || value === "") {
-        text.innerHTML = "(Za krótkie)";
-        registerButton.disabled = true;
+        text.html("Za krótkie");
+        registerButton.prop('disabled',true);
     }
     else {
-        text.innerHTML = "";
-        registerButton.disabled = false;
+        text.html("");
+        registerButton.prop('disabled',false);
     }
-})
+});
+
