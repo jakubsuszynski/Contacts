@@ -15,9 +15,10 @@
 <div class="container">
     <h2>Kontakty</h2>
     <div class="navbar">
+        <%--check if user logged in and display his login--%>
         <c:choose>
             <c:when test="${not empty user}">
-               Zalogowano jako ${user.login}
+                Zalogowano jako ${user.login}
                 <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>
@@ -28,51 +29,61 @@
     </div>
     <div class="content">
         <h3>Dodaj kontakt</h3>
+        <%--place for optional messages--%>
         ${message}
         ${errorMessage}
+        <%--form for all data--%>
         <form action="/addContact" method="POST">
             <div class="form-group">
-                <label>Imię</label>
+                <label>Imię: </label>
                 <input type="text" class="form-control" name="name" required>
             </div>
             <div class="form-group">
-                <label>Nazwisko</label>
+                <label>Nazwisko: </label>
                 <input type="text" class="form-control" name="surname" required>
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email: </label>
                 <input type="email" class="form-control" name="email" required>
             </div>
             <div class="form-group">
 
-                <label>Hasło </label>
+                <label>Hasło: </label>
                 <p id="passwordStrengthText"></p>
                 <input id="password" type="text" class="form-control" name="password" required>
             </div>
 
             <div class="form-group">
-                <label>Kategoria:</label>
-                Słuzbowy <input type="radio" name="category" value="business">
-                Prywatny <input type="radio" name="category" value="private">
-                Inny <input type="radio" name="category" value="other">
+                <label>Kategoria: </label>
+                Słuzbowy <input type="radio" name="category" id="business" value="Sluzbowy">
+                Prywatny <input type="radio" name="category" id="private" value="Prywatny">
+                Inny <input type="radio" name="category" id="other" value="Inny" checked>
             </div>
 
             <div class="form-group">
-                <label>Podkategoria</label>
-                <input type="text" class="form-control" name="subcategory" required>
+                <p id="subcategoryLabel">Podkategoria: </p>
+                <select id="businessSubcategory" name="subcategory" hidden>
+                    <option value="Klient">Klient</option>
+                    <option value="Szef">Szef</option>
+                    <option value="Kierowca">Kierowca</option>
+                </select>
+                <input id="privateText" type="text" class="form-control" name="subcategory" hidden>
+                <input id="default" type="text" class="form-control" name="subcategory" value="" hidden>
             </div>
+
             <div class="form-group">
-                <label>Numer telefonu</label>
+                <label>Numer telefonu: </label>
                 <input type="tel" class="form-control" name="telephone" required>
             </div>
             <div class="form-group">
-                <label>Data urodzenia</label>
+                <label>Data urodzenia: </label>
                 <input type="date" class="form-control" name="dob" required>
             </div>
             <button type="submit" id="registerButton" class="btn btn-primary">Dodaj kontakt</button>
         </form>
 
     </div>
+    <a href="/index.jsp">Wróć do strony głównej</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -84,6 +95,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<script src="scripts/passwordStrength.js"></script>
+<script src="scripts/addingContactsScript.js"></script>
 </body>
 </html>

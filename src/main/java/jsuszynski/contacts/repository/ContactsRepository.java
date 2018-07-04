@@ -40,10 +40,13 @@ public class ContactsRepository {
 
 
     public Contact findById(Long id) {
-
-        return (Contact) entityManager.createQuery("FROM Contact u WHERE u.id=:id")
-                .setParameter("id", id)
-                .getSingleResult();
+        try {
+            return (Contact) entityManager.createQuery("FROM Contact u WHERE u.id=:id")
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void editContact(Contact contact) {

@@ -30,7 +30,7 @@
         <h3>Kontakty</h3>
         ${message}
         ${errorMessage}
-
+<%--If user is logged in - show options to modify base. If not - don't display them--%>
         <c:choose>
             <c:when test="${not empty user}">
                 <c:forEach var="entry" items="${contacts}">
@@ -44,7 +44,7 @@
                             <li>Numer telefonu: ${entry.telephone}</li>
                             <li>Data urodzenia ${entry.dob}</li>
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
-                            <li><a href="/edit?id=${entry.id}">Edytuj wpis</a></li>
+                            <li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>
                         </ul>
                     </details>
                 </c:forEach>
@@ -76,6 +76,7 @@
 
 
     </div>
+    <a href="/index.jsp">Wróć do strony głównej</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
