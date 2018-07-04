@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Contacts</h2>
+    <h2>Kontakty</h2>
     <div class="navbar">
         <c:choose>
             <c:when test="${not empty user}">

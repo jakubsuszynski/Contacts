@@ -4,7 +4,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Zaloguj się</title>
+    <title>Dodaj</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
@@ -20,35 +20,53 @@
                 <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>
-                <a href="/login.jsp">Login</a>
-                <a href="/register.jsp">Rejestracja</a>
-
+                <a href="login.jsp">Login</a>
+                <a href="register.jsp">Rejestracja</a>
             </c:otherwise>
         </c:choose>
     </div>
     <div class="content">
-
-        <h3>Login</h3>
+        <h2>Dodaj kontakt</h2>
         ${message}
         ${errorMessage}
-        <form action="/login" method="POST">
+        <form action="/addContact" method="POST">
             <div class="form-group">
-                <label>Login</label>
-                <input type="text" class="form-control" name="login" required>
+                <label>Imię</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Nazwisko</label>
+                <input type="text" class="form-control" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" required>
             </div>
             <div class="form-group">
                 <label>Hasło</label>
                 <input type="password" class="form-control" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Zaloguj</button>
+            <div class="form-group">
+                <label>Kategoria</label>
+                <input type="text" class="form-control" name="category" required>
+            </div>
+            <div class="form-group">
+                <label>Podkategoria</label>
+                <input type="text" class="form-control" name="subcategory" required>
+            </div>
+            <div class="form-group">
+                <label>Numer telefonu</label>
+                <input type="tel" class="form-control" name="telephone" required>
+            </div>
+            <div class="form-group">
+                <label>Data urodzenia</label>
+                <input type="date" class="form-control" name="dob" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Dodaj kontakt</button>
         </form>
-
-
 
     </div>
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

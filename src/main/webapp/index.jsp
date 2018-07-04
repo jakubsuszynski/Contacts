@@ -29,8 +29,8 @@
     <div class="content">
         ${message}
         ${errorMessage}
-
-
+            <a href="/contacts">Kontakty</a>
+            <a href="/addContact.jsp">Dodaj nowy wpis</a>
 
     </div>
 </div>

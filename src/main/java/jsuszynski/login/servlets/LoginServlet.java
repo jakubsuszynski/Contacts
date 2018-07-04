@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
     private boolean loginUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
-            req.login(req.getParameter("login"), req.getParameter("password"));
+            req.login(req.getParameter("login"), req.getParameter("password")); //login user and set him in session
             req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter("login")));
         } catch (ServletException e) {
             req.setAttribute("errorMessage", "Niepoprawny login lub hasło");

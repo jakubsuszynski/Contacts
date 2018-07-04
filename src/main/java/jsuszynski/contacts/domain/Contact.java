@@ -13,15 +13,31 @@ public class Contact {
     @Column(nullable = false, unique = true)
     private Long id;
     private String name;
+
     private String surname;
 
     @Column(unique = true)
     private String email;
+
     private String password;
-    private Category category;
+    private Long category;
     private String subcategory;
     private String telephone;
     private LocalDate dob;
+
+    public Contact() {
+    }
+
+    public Contact(String name, String surname, String email, String password, Long category, String subcategory, String telephone, LocalDate dob) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.category = category;
+        this.subcategory = subcategory;
+        this.telephone = telephone;
+        this.dob = dob;
+    }
 
     public Long getId() {
         return id;
@@ -59,11 +75,11 @@ public class Contact {
         this.password = password;
     }
 
-    public Category getCategory() {
+    public Long getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
 
