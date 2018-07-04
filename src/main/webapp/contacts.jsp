@@ -37,36 +37,43 @@
                     <details>
                         <summary>${entry.name} ${entry.surname} </summary>
                         <ul>
-                            <li> ${entry.email}</li>
-                            <li> ${entry.password}</li>
-                            <li> ${entry.category}</li>
-                            <li> ${entry.subcategory}</li>
-                            <li> ${entry.telephone}</li>
-                            <li> ${entry.dob}</li>
+                            <li>Email: ${entry.email}</li>
+                            <li>Hasło: ${entry.password}</li>
+                            <li>Kategoria: ${entry.category}</li>
+                            <li>Podkategoria: ${entry.subcategory}</li>
+                            <li>Numer telefonu: ${entry.telephone}</li>
+                            <li>Data urodzenia ${entry.dob}</li>
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
                             <li><a href="/edit?id=${entry.id}">Edytuj wpis</a></li>
                         </ul>
                     </details>
                 </c:forEach>
+                <ul>
+                    <li><a href="/contacts">Kontakty</a></li>
+                    <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
+                </ul>
             </c:when>
+
             <c:otherwise>
                 <c:forEach var="entry" items="${contacts}">
                     <details>
                         <summary>${entry.name} ${entry.surname} </summary>
                         <ul>
-                            <li> ${entry.email}</li>
-                            <li> ${entry.password}</li>
-                            <li> ${entry.category}</li>
-                            <li> ${entry.subcategory}</li>
-                            <li> ${entry.telephone}</li>
-                            <li> ${entry.dob}</li>
+                            <li>Email: ${entry.email}</li>
+                            <li>Hasło: ${entry.password}</li>
+                            <li>Kategoria: ${entry.category}</li>
+                            <li>Podkategoria: ${entry.subcategory}</li>
+                            <li>Numer telefonu: ${entry.telephone}</li>
+                            <li>Data urodzenia ${entry.dob}</li>
                         </ul>
                     </details>
                 </c:forEach>
+                <ul>
+                    <li><a href="/contacts">Kontakty</a></li>
+                </ul>
             </c:otherwise>
         </c:choose>
-        <a href="/index.jsp">Wróć do strony głównej</a>
-        <a href="/addContact.jsp">Dodaj nowy wpis</a>
+
 
     </div>
 </div>

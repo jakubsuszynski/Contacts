@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="container">
@@ -26,7 +26,7 @@
         </c:choose>
     </div>
     <div class="content">
-        <h2>Dodaj kontakt</h2>
+        <h3>Dodaj kontakt</h3>
         ${message}
         ${errorMessage}
         <form action="/addContact" method="POST">
@@ -43,8 +43,9 @@
                 <input type="email" class="form-control" name="email" required>
             </div>
             <div class="form-group">
-                <label>Hasło</label>
-                <input type="password" class="form-control" name="password" required>
+
+                <label>Hasło </label><p id="passwordStrengthText"></p>
+                <input id="password" type="password" class="form-control" name="password" required>
             </div>
             <div class="form-group">
                 <label>Kategoria</label>
@@ -62,7 +63,7 @@
                 <label>Data urodzenia</label>
                 <input type="date" class="form-control" name="dob" required>
             </div>
-            <button type="submit" class="btn btn-primary">Dodaj kontakt</button>
+            <button type="submit" id="registerButton" class="btn btn-primary">Dodaj kontakt</button>
         </form>
 
     </div>
@@ -76,5 +77,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script src="scripts/passwordStrength.js"></script>
 </body>
 </html>
