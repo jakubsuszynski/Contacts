@@ -1,7 +1,6 @@
 package jsuszynski.login.repository;
 
 
-
 import jsuszynski.login.domain.User;
 
 import javax.ejb.Singleton;
@@ -15,20 +14,24 @@ public class UsersRepository {
     private EntityManager entityManager;
 
     public User findUserByLogin(String login) {
-        return (User) entityManager.createQuery("from User u where u.login=:login")
+        return (User) entityManager.createQuery("FROM User u WHERE u.login=:login")
                 .setParameter("login", login)
                 .getSingleResult();
     }
 
     public User findUserByEmail(String email) {
-        return (User) entityManager.createQuery("from User u where u.email=:email")
+        return (User) entityManager.createQuery("FROM User u WHERE u.email=:email")
                 .setParameter("email", email)
                 .getSingleResult();
     }
 
-    public List<User> getAllUsers() {
-        return entityManager.createQuery("from User").getResultList();
+    public boolean doesExist(String login, String email) {
+        List results = entityManager.createQuery("FROM User u WHERE u.email=:email OR u.login=:login")
+                .setParameter("email", email).setParameter("login", login).getResultList();
+        return !results.isEmpty();
+
     }
+
 
     public void register(User user) {
         entityManager.persist(user);

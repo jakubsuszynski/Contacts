@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -76,10 +75,8 @@ public class RegisterServlet extends HttpServlet {
 
     private boolean doesUserExist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<User> allUsers = usersRepository.getAllUsers();
+        if (usersRepository.doesExist(req.getParameter(LOGIN), req.getParameter(EMAIL))) {
 
-        if (allUsers.stream().anyMatch(s -> s.getLogin().equals(req.getParameter(LOGIN))
-                || s.getEmail().equals(req.getParameter(EMAIL)))) {
 
             req.setAttribute("errorMessage", "Użytkownik z tym emailem lub loginem istnieje");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
