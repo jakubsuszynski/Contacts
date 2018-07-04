@@ -41,6 +41,7 @@
 
 
                 <ul>
+                        <%--This div is hidden when user want to edit contact--%>
                     <div class="toHide">
                         <li>Email: ${entry.email}</li>
                         <li>Hasło: ${entry.password}</li>
@@ -49,20 +50,25 @@
                         <li>Numer telefonu: ${entry.telephone}</li>
                         <li>Data urodzenia: ${entry.dob}</li>
                     </div>
+                        <%--Only logged user can modify contacts--%>
                     <c:choose>
                         <c:when test="${not empty user}">
                             <div class="toEdit" hidden>
-                                <li>Email: <input type="text" name="email" value="${entry.email}"/></li>
-                                <li>Hasło: <input type="text" name="password" value="${entry.password}"/></li>
-                                <li>Kategoria: <input type="text" name="category" value="${entry.category}"/></li>
-                                <li>Podkategoria: <input type="text" name="subcategory" value="${entry.subcategory}"/>
-                                </li>
-                                <li>Numer telefonu: <input type="text" name="telephone" value="${entry.telephone}"/>
-                                </li>
-                                <li>Data urodzenia: <input type="date" name="dob" value="${entry.dob}"/></li>
+                                <form action="/editContact" method="POST">
+                                    <li>Imię: <input type="text" name="name" value="${entry.name}"/></li>
+                                    <li>Nazwisko: <input type="text" name="surname" value="${entry.surname}"/></li>
+                                    <li>Email: <input type="text" name="email" value="${entry.email}"/></li>
+                                    <li>Hasło: <input type="text" name="password" value="${entry.password}"/></li>
+                                    <li>Kategoria: <input type="text" name="category" value="${entry.category}"/></li>
+                                    <li>Podkategoria: <input type="text" name="subcategory" value="${entry.subcategory}"/></li>
+                                    <li>Numer telefonu: <input type="text" name="telephone" value="${entry.telephone}"/></li>
+                                    <li>Data urodzenia: <input type="date" name="dob" value="${entry.dob}"/></li>
+                                    <button type="submit">Zapisz zmiany</button>
+                                </form>
                             </div>
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
                             <li><a href="#" id="begin">Edytuj wpis</a></li>
+                            <li class="toEdit" hidden><a href="#" id="end">Anuluj zmiany</a></li>
                         </c:when>
                         <c:otherwise>
                         </c:otherwise>

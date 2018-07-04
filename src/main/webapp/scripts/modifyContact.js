@@ -6,5 +6,13 @@
     $(".toEdit").each(function () {
         $(this).prop('hidden', false)
     });
-    $("#saveButton").prop('hidden', false);
+});
+$("#end").click(function () {
+    $(".toHide").each(function () {
+        $(this).prop('hidden', false)
+    });
+    $("#begin").prop('hidden', false);
+    $(".toEdit").each(function () {
+        $(this).prop('hidden', true)
+    });
 });
