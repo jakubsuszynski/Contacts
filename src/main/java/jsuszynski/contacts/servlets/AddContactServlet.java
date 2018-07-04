@@ -31,7 +31,7 @@ public class AddContactServlet extends HttpServlet {
     private boolean checkIfExists(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (doesEmailExist(req.getParameter("email"))) {
             req.setAttribute("errorMessage", "Email znajduje się już w bazie kontaktów");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/temp.jsp");
             requestDispatcher.forward(req, resp);
             return true;
         }

@@ -4,7 +4,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Edytuj</title>
+    <title>Dodaj</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
@@ -35,27 +35,27 @@
         ${message}
         ${errorMessage}
         <%--form for all data--%>
-        <form action="" method="POST" id="addForm">
+        <form action="/addContact" method="POST">
 
             <div class="form-group">
                 <label>Imię: </label>
-                <input type="text" class="form-control" name="name" required value="${contact.name}">
+                <input type="text" class="form-control" name="name" required>
             </div>
 
             <div class="form-group">
                 <label>Nazwisko: </label>
-                <input type="text" class="form-control" name="surname" required value="${contact.surname}">
+                <input type="text" class="form-control" name="surname" required>
             </div>
 
             <div class="form-group">
                 <label>Email: </label>
-                <input type="email" class="form-control" name="email" required value="${contact.email}">
+                <input type="email" class="form-control" name="email" required>
             </div>
 
             <div class="form-group">
                 <label>Hasło: </label>
                 <p id="passwordStrengthText"></p>
-                <input id="password" type="text" class="form-control" name="password" required ${contact.password}>
+                <input id="password" type="text" class="form-control" name="password" required>
             </div>
 
             <div class="form-group">
@@ -75,9 +75,8 @@
                     <option value="Szef">Szef</option>
                     <option value="Kierowca">Kierowca</option>
                 </select>
-                <%--... or type your own subcategory, if user has chosen private contact--%>
-                <input id="privateText" type="text" class="form-control" name="subcategory" hidden
-                       value="${contact.subcategory}">
+                    <%--... or type your own subcategory, if user has chosen private contact--%>
+                <input id="privateText" type="text" class="form-control" name="subcategory" hidden>
 
                 <input id="default" type="text" class="form-control" name="subcategory" value="" hidden>
             </div>
@@ -85,12 +84,12 @@
 
             <div class="form-group">
                 <label>Numer telefonu: </label>
-                <input type="text" class="form-control" name="telephone" required value="${contact.telephone}">
+                <input type="tel" class="form-control" name="telephone" required>
             </div>
 
             <div class="form-group">
                 <label>Data urodzenia: </label>
-                <input type="date" class="form-control" name="dob" required value="${contact.dob}">
+                <input type="date" class="form-control" name="dob" required>
             </div>
 
             <button type="submit" id="registerButton" class="btn btn-primary">Dodaj kontakt</button>
@@ -106,16 +105,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-<script>
-
-    if (document.referrer.match(/contacts/)) {
-        $("#addForm").prop("action", "/saveChanges")
-    }
-    else {
-        $("#addForm").prop("action", "/addContact");
-    }
-</script>
 
 <script src="scripts/addingContacts.js"></script>
 </body>
