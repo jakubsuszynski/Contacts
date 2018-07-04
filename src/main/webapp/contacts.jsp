@@ -53,21 +53,19 @@
                         <c:when test="${not empty user}">
 
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
-                            <li><a href="/editContact?id=${entry.id}" id="begin">Edytuj wpis</a></li>
+                            <li><a href="/prepareContact?id=${entry.id}" id="begin">Edytuj wpis</a></li>
                         </c:when>
                         <c:otherwise>
                         </c:otherwise>
                     </c:choose>
                 </ul>
             </details>
-
-
         </c:forEach>
 
         <ul>
             <c:choose>
                 <c:when test="${not empty user}">
-                    <li><a href="/temp.jsp">Dodaj nowy wpis</a></li>
+                    <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>

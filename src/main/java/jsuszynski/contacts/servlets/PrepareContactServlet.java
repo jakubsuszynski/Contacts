@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/editContact")
-public class EditContact extends HttpServlet {
+@WebServlet("/prepareContact")
+public class PrepareContactServlet extends HttpServlet {
     @Inject
     ContactsRepository contactsRepository;
 

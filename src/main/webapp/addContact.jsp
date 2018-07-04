@@ -35,7 +35,7 @@
         ${message}
         ${errorMessage}
         <%--form for all data--%>
-        <form action="" method="POST" id="addForm">
+        <form action="/saveChanges" method="POST" id="addForm">
 
             <div class="form-group">
                 <label>Imię: </label>
@@ -54,7 +54,7 @@
 
             <div class="form-group">
                 <label>Hasło: </label>
-                <p id="passwordStrengthText"></p>
+                <p id="passwordStrengthText" class="constraint"></p>
                 <input id="password" type="text" class="form-control" name="password" required
                        value="${contact.password}">
             </div>
@@ -86,7 +86,9 @@
 
             <div class="form-group">
                 <label>Numer telefonu: </label>
-                <input type="text" class="form-control" name="telephone" required value="${contact.telephone}">
+                <p id="telephoneText" class="constraint"></p>
+                <input id="telephone" type="text" class="form-control" name="telephone" required
+                       value="${contact.telephone}">
             </div>
 
             <div class="form-group">
@@ -108,15 +110,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<script>
-
-    if (document.referrer.match(/contacts/)) {
-        $("#addForm").prop("action", "/saveChanges")
-    }
-    else {
-        $("#addForm").prop("action", "/addContact");
-    }
-</script>
 
 <script src="scripts/addingContacts.js"></script>
 </body>

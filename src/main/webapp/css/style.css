@@ -2,14 +2,14 @@ ul {
     list-style: none;
 }
 
-#passwordStrengthText {
+#constraint {
     color: red;
 }
 
-body {
-    padding-top: 5%;
+.container {
+    /*padding-top: 5%;*/
 }
 
-.container {
-    padding-top: 3%;
+.content {
+    /*padding-top: 5%;*/
 }

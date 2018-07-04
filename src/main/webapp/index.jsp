@@ -37,7 +37,7 @@
             <li><a href="/contacts">Kontakty</a></li>
             <c:choose>
                 <c:when test="${not empty user}">
-                    <li><a href="/temp.jsp">Dodaj nowy wpis</a></li>
+                    <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>
@@ -45,7 +45,6 @@
         </ul>
     </div>
 </div>
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
