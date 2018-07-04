@@ -9,8 +9,9 @@ if (value === "") {
 //password length security
 password.on('input', function () {
     var value = $(this).val();
-    if (value.length < 4 || value === "") {
-        text.html("Za krótkie");
+    var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    if (!pattern.test(value)) {
+        text.html("Hasło musi zawierać co najmniej jedną wielką literę i cyfrę oraz składać się z 8 znaków");
         registerButton.prop('disabled', true);
     }
     else {

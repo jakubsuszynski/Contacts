@@ -22,12 +22,23 @@ public class AddContactServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (checkIfExists(req, resp)) return;
+        addContact(req);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
+    private boolean checkIfExists(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (doesEmailExist(req.getParameter("email"))) {
             req.setAttribute("errorMessage", "Email znajduje się już w bazie kontaktów");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
             requestDispatcher.forward(req, resp);
-            return;
+            return true;
         }
+        return false;
+    }
+
+    private void addContact(HttpServletRequest req) {
         Contact contact = new ContactBuilder()
                 .setCategory(req.getParameter("category"))
                 .setDob(LocalDate.parse(req.getParameter("dob")))
@@ -39,8 +50,6 @@ public class AddContactServlet extends HttpServlet {
                 .setPassword(req.getParameter("password"))
                 .createContact();
         contactsRepository.addContact(contact);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
-        requestDispatcher.forward(req, resp);
     }
 
     public boolean doesEmailExist(String email) {

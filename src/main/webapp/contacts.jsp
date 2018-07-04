@@ -30,53 +30,48 @@
         <h3>Kontakty</h3>
         ${message}
         ${errorMessage}
-<%--If user is logged in - show options to modify base. If not - don't display them--%>
-        <c:choose>
-            <c:when test="${not empty user}">
-                <c:forEach var="entry" items="${contacts}">
-                    <details>
-                        <summary>${entry.name} ${entry.surname} </summary>
-                        <ul>
-                            <li>Email: ${entry.email}</li>
-                            <li>Hasło: ${entry.password}</li>
-                            <li>Kategoria: ${entry.category}</li>
-                            <li>Podkategoria: ${entry.subcategory}</li>
-                            <li>Numer telefonu: ${entry.telephone}</li>
-                            <li>Data urodzenia ${entry.dob}</li>
+        <%--If user is logged in - show options to modify contacts base. If not - don't display them. User was set in session during loging in.--%>
+
+        <c:forEach var="entry" items="${contacts}">
+            <details>
+                <summary><span class="textField" name="name">${entry.name} </span>
+                    <span class="textField" name="surname">${entry.surname} </span></summary>
+                <ul>
+                    <li class="emailField" name="email">Email: ${entry.email}</li>
+                    <li class="textField" name="password">Hasło: ${entry.password}</li>
+                    <li class="textField" name="category">Kategoria: ${entry.category}</li>
+                    <li class="textField" name="subcategory">Podkategoria: ${entry.subcategory}</li>
+                    <li class="textField" name="telephone">Numer telefonu: ${entry.telephone}</li>
+                    <li class="dateField" name="dob">Data urodzenia ${entry.dob}</li>
+                    <c:choose>
+                        <c:when test="${not empty user}">
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
-                            <li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>
-                        </ul>
-                    </details>
-                </c:forEach>
-                <ul>
-                    <li><a href="/contacts">Kontakty</a></li>
+                            <li><a href="#" class="edit">Edytuj wpis</a></li>
+                            <%--<li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>--%>
+                        </c:when>
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </details>
+        </c:forEach>
+        <ul>
+            <c:choose>
+                <c:when test="${not empty user}">
                     <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
-                </ul>
-            </c:when>
+                    <%--<li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>--%>
+                </c:when>
+                <c:otherwise>
+                </c:otherwise>
+            </c:choose>
 
-            <c:otherwise>
-                <c:forEach var="entry" items="${contacts}">
-                    <details>
-                        <summary>${entry.name} ${entry.surname} </summary>
-                        <ul>
-                            <li>Email: ${entry.email}</li>
-                            <li>Hasło: ${entry.password}</li>
-                            <li>Kategoria: ${entry.category}</li>
-                            <li>Podkategoria: ${entry.subcategory}</li>
-                            <li>Numer telefonu: ${entry.telephone}</li>
-                            <li>Data urodzenia ${entry.dob}</li>
-                        </ul>
-                    </details>
-                </c:forEach>
-                <ul>
-                    <li><a href="/contacts">Kontakty</a></li>
-                </ul>
-            </c:otherwise>
-        </c:choose>
-
+            <li><a href="/index.jsp">Wróć do strony głównej</a></li>
+        </ul>
 
     </div>
-    <a href="/index.jsp">Wróć do strony głównej</a>
+
+</div>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -87,5 +82,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script src="scripts/modifyUser.js"></script>
 </body>
 </html>

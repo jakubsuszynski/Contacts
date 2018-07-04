@@ -34,20 +34,23 @@
         ${errorMessage}
         <%--form for all data--%>
         <form action="/addContact" method="POST">
+
             <div class="form-group">
                 <label>Imię: </label>
                 <input type="text" class="form-control" name="name" required>
             </div>
+
             <div class="form-group">
                 <label>Nazwisko: </label>
                 <input type="text" class="form-control" name="surname" required>
             </div>
+
             <div class="form-group">
                 <label>Email: </label>
                 <input type="email" class="form-control" name="email" required>
             </div>
-            <div class="form-group">
 
+            <div class="form-group">
                 <label>Hasło: </label>
                 <p id="passwordStrengthText"></p>
                 <input id="password" type="text" class="form-control" name="password" required>
@@ -60,25 +63,33 @@
                 Inny <input type="radio" name="category" id="other" value="Inny" checked>
             </div>
 
+
             <div class="form-group">
+                <%--when business contact choosen - display only business subcategories--%>
                 <p id="subcategoryLabel">Podkategoria: </p>
+
                 <select id="businessSubcategory" name="subcategory" hidden>
                     <option value="Klient">Klient</option>
                     <option value="Szef">Szef</option>
                     <option value="Kierowca">Kierowca</option>
                 </select>
+                    <%--... or type your own subcategory, if user has chosen private contact--%>
                 <input id="privateText" type="text" class="form-control" name="subcategory" hidden>
+
                 <input id="default" type="text" class="form-control" name="subcategory" value="" hidden>
             </div>
+
 
             <div class="form-group">
                 <label>Numer telefonu: </label>
                 <input type="tel" class="form-control" name="telephone" required>
             </div>
+
             <div class="form-group">
                 <label>Data urodzenia: </label>
                 <input type="date" class="form-control" name="dob" required>
             </div>
+
             <button type="submit" id="registerButton" class="btn btn-primary">Dodaj kontakt</button>
         </form>
 
@@ -95,6 +106,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<script src="scripts/addingContactsScript.js"></script>
+<script src="scripts/addingContacts.js"></script>
 </body>
 </html>
