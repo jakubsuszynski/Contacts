@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
             req.login(req.getParameter("login"), req.getParameter("password"));
             req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter("login")));
         } catch (ServletException e) {
-            req.setAttribute("errorMessage", "Zły login lub hasło");
+            req.setAttribute("errorMessage", "Wrong login or password");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(req, resp);
             return true;
@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
         if (req.getParameter("login").isEmpty() || req.getParameter("password").isEmpty()) {
 
-            req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
+            req.setAttribute("errorMessage", "Provide all data");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
             requestDispatcher.forward(req, resp);
 

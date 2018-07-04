@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
                 , "user"
                 , user.getId()));
 
-        req.setAttribute("message", "Użytkownik zarejestrowany pomyślnie");
+        req.setAttribute("message", "User registered successfully");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
 
         requestDispatcher.forward(req, resp);
@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
                 || req.getParameter("name").isEmpty()
                 || req.getParameter("surname").isEmpty()) {
 
-            req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
+            req.setAttribute("errorMessage", "Provide all data");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
             requestDispatcher.forward(req, resp);
             return true;
@@ -78,7 +78,7 @@ public class RegisterServlet extends HttpServlet {
         if (usersRepository.doesExist(req.getParameter(LOGIN), req.getParameter(EMAIL))) {
 
 
-            req.setAttribute("errorMessage", "Użytkownik z tym emailem lub loginem istnieje");
+            req.setAttribute("errorMessage", "User with provided login or email already exists.");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
             requestDispatcher.forward(req, resp);
 
