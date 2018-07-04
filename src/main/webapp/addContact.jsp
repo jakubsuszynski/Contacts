@@ -55,7 +55,8 @@
             <div class="form-group">
                 <label>Hasło: </label>
                 <p id="passwordStrengthText"></p>
-                <input id="password" type="text" class="form-control" name="password" required ${contact.password}>
+                <input id="password" type="text" class="form-control" name="password" required
+                       value="${contact.password}">
             </div>
 
             <div class="form-group">
