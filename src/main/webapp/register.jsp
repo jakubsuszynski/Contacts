@@ -40,7 +40,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Zarejestruj</button>
         </form>
-
+        <a href="/index.jsp">Wróć do strony głównej</a>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

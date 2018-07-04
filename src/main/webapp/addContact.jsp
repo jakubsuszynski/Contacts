@@ -44,13 +44,18 @@
             </div>
             <div class="form-group">
 
-                <label>Hasło </label><p id="passwordStrengthText"></p>
-                <input id="password" type="password" class="form-control" name="password" required>
+                <label>Hasło </label>
+                <p id="passwordStrengthText"></p>
+                <input id="password" type="text" class="form-control" name="password" required>
             </div>
+
             <div class="form-group">
-                <label>Kategoria</label>
-                <input type="text" class="form-control" name="category" required>
+                <label>Kategoria:</label>
+                Słuzbowy <input type="radio" name="category" value="business">
+                Prywatny <input type="radio" name="category" value="private">
+                Inny <input type="radio" name="category" value="other">
             </div>
+
             <div class="form-group">
                 <label>Podkategoria</label>
                 <input type="text" class="form-control" name="subcategory" required>

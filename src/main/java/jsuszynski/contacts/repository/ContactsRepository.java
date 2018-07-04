@@ -28,6 +28,17 @@ public class ContactsRepository {
         entityManager.remove(findById(id));
     }
 
+    public Contact findByEmail(String email) {
+        try {
+            return (Contact) entityManager.createQuery("FROM Contact u WHERE u.email=:email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
     public Contact findById(Long id) {
 
         return (Contact) entityManager.createQuery("FROM Contact u WHERE u.id=:id")

@@ -20,7 +20,7 @@ public class Contact {
     private String email;
 
     private String password;
-    private Long category;
+    private String category;
     private String subcategory;
     private String telephone;
     private LocalDate dob;
@@ -28,7 +28,7 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(String name, String surname, String email, String password, Long category, String subcategory, String telephone, LocalDate dob) {
+    public Contact(String name, String surname, String email, String password, String category, String subcategory, String telephone, LocalDate dob) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -75,11 +75,11 @@ public class Contact {
         this.password = password;
     }
 
-    public Long getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Long category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

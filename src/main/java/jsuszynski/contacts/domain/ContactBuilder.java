@@ -7,7 +7,7 @@ public class ContactBuilder {
     private String surname;
     private String email;
     private String password;
-    private Long category;
+    private String category;
     private String subcategory;
     private String telephone;
     private LocalDate dob;
@@ -32,7 +32,7 @@ public class ContactBuilder {
         return this;
     }
 
-    public ContactBuilder setCategory(Long category) {
+    public ContactBuilder setCategory(String category) {
         this.category = category;
         return this;
     }

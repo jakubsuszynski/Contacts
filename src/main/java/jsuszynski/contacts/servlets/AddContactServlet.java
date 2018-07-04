@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @WebServlet("/addContact")
 public class AddContactServlet extends HttpServlet {
@@ -21,8 +22,14 @@ public class AddContactServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (doesEmailExist(req.getParameter("email"))) {
+            req.setAttribute("errorMessage", "Email znajduje się już w bazie kontaktów");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        }
         Contact contact = new ContactBuilder()
-                .setCategory(1L)
+                .setCategory(req.getParameter("category"))
                 .setDob(LocalDate.parse(req.getParameter("dob")))
                 .setEmail(req.getParameter("email"))
                 .setName(req.getParameter("name"))
@@ -36,4 +43,7 @@ public class AddContactServlet extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
+    public boolean doesEmailExist(String email) {
+        return Optional.ofNullable(contactsRepository.findByEmail(email)).isPresent();
+    }
 }
