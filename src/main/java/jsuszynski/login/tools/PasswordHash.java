@@ -1,9 +1,8 @@
 package jsuszynski.login.tools;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.servlet.http.HttpServletRequest;
 
 public class PasswordHash {
     protected final static Logger log = LoggerFactory.getLogger(PasswordHash.class);
@@ -11,8 +10,10 @@ public class PasswordHash {
     private PasswordHash() {
     }
 
-    public static String hashPassword(HttpServletRequest req) {
-        return "";
+    public static String hashPassword(String password) {
+        String md5 = DigestUtils.md5Hex(password);
+        return md5;
+
     }
 
 }

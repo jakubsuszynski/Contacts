@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
 
     private void registerUserWithRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        usersRepository.register(new User(req.getParameter(LOGIN), PasswordHash.hashPassword(req)
+        usersRepository.register(new User(req.getParameter(LOGIN), PasswordHash.hashPassword(req.getParameter("password"))
                 , req.getParameter(EMAIL)
                 , req.getParameter("name")
                 , req.getParameter("surname")));
