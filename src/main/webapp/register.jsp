@@ -35,10 +35,10 @@
                 <input type="text" class="form-control" name="login" required>
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>Hasło</label>
                 <input type="password" class="form-control" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary">Zarejestruj</button>
         </form>
 
     </div>
