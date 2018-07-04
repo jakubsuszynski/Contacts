@@ -34,37 +34,54 @@
 
         <c:forEach var="entry" items="${contacts}">
             <details>
-                <summary><span class="textField" name="name">${entry.name} </span>
-                    <span class="textField" name="surname">${entry.surname} </span></summary>
+                <summary>
+                    <span class="toHide" name="name">${entry.name} </span>
+                    <span class="toHide" name="surname">${entry.surname} </span>
+                </summary>
+
+
                 <ul>
-                    <li class="emailField" name="email">Email: ${entry.email}</li>
-                    <li class="textField" name="password">Hasło: ${entry.password}</li>
-                    <li class="textField" name="category">Kategoria: ${entry.category}</li>
-                    <li class="textField" name="subcategory">Podkategoria: ${entry.subcategory}</li>
-                    <li class="textField" name="telephone">Numer telefonu: ${entry.telephone}</li>
-                    <li class="dateField" name="dob">Data urodzenia ${entry.dob}</li>
+                    <div class="toHide">
+                        <li>Email: ${entry.email}</li>
+                        <li>Hasło: ${entry.password}</li>
+                        <li>Kategoria: ${entry.category}</li>
+                        <li>Podkategoria: ${entry.subcategory}</li>
+                        <li>Numer telefonu: ${entry.telephone}</li>
+                        <li>Data urodzenia: ${entry.dob}</li>
+                    </div>
                     <c:choose>
                         <c:when test="${not empty user}">
+                            <div class="toEdit" hidden>
+                                <li>Email: <input type="text" name="email" value="${entry.email}"/></li>
+                                <li>Hasło: <input type="text" name="password" value="${entry.password}"/></li>
+                                <li>Kategoria: <input type="text" name="category" value="${entry.category}"/></li>
+                                <li>Podkategoria: <input type="text" name="subcategory" value="${entry.subcategory}"/>
+                                </li>
+                                <li>Numer telefonu: <input type="text" name="telephone" value="${entry.telephone}"/>
+                                </li>
+                                <li>Data urodzenia: <input type="date" name="dob" value="${entry.dob}"/></li>
+                            </div>
                             <li><a href="/delete?id=${entry.id}">Usuń wpis</a></li>
-                            <li><a href="#" class="edit">Edytuj wpis</a></li>
-                            <%--<li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>--%>
+                            <li><a href="#" id="begin">Edytuj wpis</a></li>
                         </c:when>
                         <c:otherwise>
                         </c:otherwise>
                     </c:choose>
                 </ul>
             </details>
+
+
         </c:forEach>
+
         <ul>
             <c:choose>
                 <c:when test="${not empty user}">
                     <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
-                    <%--<li><a href="/editContact?id=${entry.id}">Edytuj wpis</a></li>--%>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>
             </c:choose>
-
+            <li><a href="/contacts">Kontakty</a></li>
             <li><a href="/index.jsp">Wróć do strony głównej</a></li>
         </ul>
 
@@ -82,7 +99,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-<script src="scripts/modifyUser.js"></script>
+<script src="scripts/modifyContact.js"></script>
 </body>
 </html>
