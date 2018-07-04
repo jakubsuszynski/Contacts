@@ -21,40 +21,36 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (userLogin(req, resp)) return;
-
-        if (req.getHeader("Referer").contains("login.jsp")) {
-            resp.sendRedirect("/index.jsp");
+        if (areFieldsEmpty(req, resp) || !loginUser(req, resp)) { //if user has left empty fields or login failed - stop servlet
             return;
         }
-        resp.sendRedirect(req.getHeader("Referer"));
-    }
-
-    private boolean userLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (areFieldsEmpty(req, resp)) return true;
-
-        try {
-            req.login(req.getParameter("login"), req.getParameter("password"));
-            req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter("login")));
-        } catch (ServletException e) {
-            req.setAttribute("errorMessage", "Wrong login or password");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
-            requestDispatcher.forward(req, resp);
-            return true;
-        }
-        return false;
+            resp.sendRedirect("/index.jsp");
     }
 
     private boolean areFieldsEmpty(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (req.getParameter("login").isEmpty() || req.getParameter("password").isEmpty()) {
 
-            req.setAttribute("errorMessage", "Provide all data");
+            req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
             requestDispatcher.forward(req, resp);
 
             return true;
         }
         return false;
+    }
+
+    private boolean loginUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        try {
+            req.login(req.getParameter("login"), req.getParameter("password"));
+            req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter("login")));
+        } catch (ServletException e) {
+            req.setAttribute("errorMessage", "Niepoprawny login lub hasło");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp"); //redirect to main page if login failed
+            requestDispatcher.forward(req, resp);
+            return false;
+        }
+        return true;
     }
 }

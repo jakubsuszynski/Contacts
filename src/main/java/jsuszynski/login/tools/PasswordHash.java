@@ -11,8 +11,7 @@ public class PasswordHash {
     }
 
     public static String hashPassword(String password) {
-        String md5 = DigestUtils.md5Hex(password);
-        return md5;
+        return DigestUtils.md5Hex(password);
 
     }
 

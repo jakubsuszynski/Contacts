@@ -12,23 +12,23 @@
 </head>
 <body>
 <div class="container">
-    <h2>Englishman</h2>
-    ${message}
-    ${errorMessage}
+    <h2>Kontakty</h2>
     <div class="navbar">
         <c:choose>
             <c:when test="${not empty user}">
                 ${user.login}
-                <a href="/logout">Logout</a>
+                <a href="/logout">Wyloguj</a>
             </c:when>
             <c:otherwise>
                 <a href="login.jsp">Login</a>
-                <a href="register.jsp">Register</a>
+                <a href="register.jsp">Rejestracja</a>
 
             </c:otherwise>
         </c:choose>
     </div>
     <div class="content">
+        ${message}
+        ${errorMessage}
 
         <a href="categories">Przejdź do wyboru kategorii</a>
 
