@@ -35,7 +35,7 @@
         ${message}
         ${errorMessage}
         <%--form for all data--%>
-        <form action="/saveChanges" method="POST" id="addForm">
+        <form action="/persist" method="POST" id="addForm">
 
             <div class="form-group">
                 <label>Imię: </label>
@@ -60,10 +60,10 @@
             </div>
 
             <div class="form-group">
-                <label>Kategoria: </label>
-                Słuzbowy <input type="radio" name="category" id="business" value="Sluzbowy">
-                Prywatny <input type="radio" name="category" id="private" value="Prywatny">
-                Inny <input type="radio" name="category" id="other" value="Inny" checked>
+              Kategoria:
+               <label>Słuzbowy </label><input type="radio" name="category" id="business" value="Sluzbowy">
+                <label>Prywatny </label><input type="radio" name="category" id="private" value="Prywatny">
+                <label>Inny </label><input type="radio" name="category" id="other" value="Inny" checked>
             </div>
 
 
@@ -71,16 +71,17 @@
                 <%--when business contact choosen - display only business subcategories--%>
                 <p id="subcategoryLabel">Podkategoria: </p>
 
-                <select id="businessSubcategory" name="subcategory" hidden>
+                <select id="businessSubcategory" name="subcategory" hidden >
+                    <option value="" hidden></option>
                     <option value="Klient">Klient</option>
                     <option value="Szef">Szef</option>
                     <option value="Kierowca">Kierowca</option>
                 </select>
                 <%--... or type your own subcategory, if user has chosen private contact--%>
                 <input id="privateText" type="text" class="form-control" name="subcategory" hidden
-                       value="${contact.subcategory}">
+                       value="${contact.subcategory}"/>
 
-                <input id="default" type="text" class="form-control" name="subcategory" value="" hidden>
+                <input id="default" type="text" class="form-control" name="subcategory" hidden value=""/>
             </div>
 
 
@@ -96,7 +97,7 @@
                 <input type="date" class="form-control" name="dob" required value="${contact.dob}">
             </div>
 
-            <button type="submit" id="registerButton" class="btn btn-primary">Dodaj kontakt</button>
+            <button type="submit" id="registerButton" class="btn btn-primary">Zapisz</button>
         </form>
 
     </div>

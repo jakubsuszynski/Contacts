@@ -11,7 +11,7 @@ if (value === "") {
 //password length security
 password.on('input', function () {
     var value = $(this).val();
-    var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
 
     if (!passwordPattern.test(value)) {
@@ -24,14 +24,14 @@ password.on('input', function () {
     }
 
 });
-
+//check telephone requirements
 telephone.on('input', function () {
     var value = $(this).val();
-    var numberPattern = /^(?=.*\d)[0-9]{4,}$/
+    var numberPattern = /^(?=.*\d)[0-9]{4,}$/;
 
 
     if (!numberPattern.test(value)) {
-        telephoneText.html("Numer telefonu składa się z przynajmniej 4 cyfr.");
+        telephoneText.html("Numer telefonu musi składać się z przynajmniej 4 cyfr.");
         registerButton.prop('disabled', true);
     }
     else {
@@ -40,7 +40,8 @@ telephone.on('input', function () {
     }
 
 });
-//hiding options, depending on which category is chosen
+
+//hiding subcategories, depending on which category is chosen
 
 $('#subcategoryLabel').prop('hidden', true);
 $('#business').click(function () {

@@ -1,9 +1,7 @@
 package jsuszynski.login.servlets;
 
 
-import jsuszynski.login.domain.Role;
 import jsuszynski.login.domain.User;
-import jsuszynski.login.repository.RoleRepository;
 import jsuszynski.login.repository.UsersRepository;
 import jsuszynski.login.tools.PasswordHash;
 
@@ -20,8 +18,6 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Inject
     private UsersRepository usersRepository;
-    @Inject
-    private RoleRepository roleRepository;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,13 +27,12 @@ public class RegisterServlet extends HttpServlet {
         if (doesUserExist(req, resp)) return;
 
         registerUserWithRole(req, resp);
-        return;
     }
 
     private boolean areFieldsEmpty(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (req.getParameter("login").isEmpty() //check if user has left some fields empty
-                || req.getParameter("password").isEmpty() ){
+                || req.getParameter("password").isEmpty()) {
 
             req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/register.jsp");
@@ -66,13 +61,6 @@ public class RegisterServlet extends HttpServlet {
     private void registerUserWithRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         usersRepository.register(new User(req.getParameter("login"), PasswordHash.hashPassword(req.getParameter("password")))); //add user to db
-
-        User user = usersRepository.findUserByLogin(req.getParameter("login"));
-
-        roleRepository.register(new Role(user.getLogin() //add role to db with new users login and id
-                , "user"
-                , "user"
-                , user.getId()));
 
         req.setAttribute("message", "Użytkownik zarejestrowany pomyślnie");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");

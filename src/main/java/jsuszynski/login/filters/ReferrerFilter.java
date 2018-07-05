@@ -17,13 +17,13 @@ public class ReferrerFilter implements Filter {
 
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
+        //if logged user tries to login or register - redirect him
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         if (req.getRequestURL().toString().contains("login.jsp") || req.getRequestURL().toString().contains("register.jsp")) {

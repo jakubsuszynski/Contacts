@@ -65,7 +65,7 @@
         <ul>
             <c:choose>
                 <c:when test="${not empty user}">
-                    <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
+                    <li><a href="/form.jsp">Dodaj nowy wpis</a></li>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>
@@ -88,6 +88,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="scripts/modifyContact.js"></script>
 </body>
 </html>

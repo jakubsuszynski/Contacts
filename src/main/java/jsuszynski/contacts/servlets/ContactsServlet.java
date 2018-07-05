@@ -16,6 +16,7 @@ import java.util.List;
 @WebServlet("/contacts")
 public class ContactsServlet extends HttpServlet {
     @Inject
+
     ContactsRepository contactsRepository;
 
     @Override

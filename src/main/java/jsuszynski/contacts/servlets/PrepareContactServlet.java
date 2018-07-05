@@ -23,7 +23,7 @@ public class PrepareContactServlet extends HttpServlet {
         Contact contact = contactsRepository.findById(Long.parseLong(req.getParameter("id")));
 
         req.getSession().setAttribute("contact", contact);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

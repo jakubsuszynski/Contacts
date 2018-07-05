@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
 
-@WebServlet("/saveChanges")
+@WebServlet("/persist")
 public class SaveChangesServlet extends HttpServlet {
     @Inject
     ContactsRepository contactsRepository;
@@ -22,7 +22,7 @@ public class SaveChangesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         addContact(req, resp);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -50,10 +50,10 @@ public class SaveChangesServlet extends HttpServlet {
         contact.setTelephone(req.getParameter("telephone"));
         contact.setPassword(req.getParameter("password"));
         try {
-            contactsRepository.editContact(contact);
-        }catch (Exception e){
+            contactsRepository.persist(contact);
+        } catch (Exception e) {
             req.setAttribute("errorMessage", "Email zajęty");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
             requestDispatcher.forward(req, resp);
         }
     }
@@ -61,7 +61,7 @@ public class SaveChangesServlet extends HttpServlet {
     private boolean checkIfExists(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (doesEmailExist(req.getParameter("email"))) {
             req.setAttribute("errorMessage", "Email znajduje się już w bazie kontaktów");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/addContact.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
             requestDispatcher.forward(req, resp);
             return true;
         }

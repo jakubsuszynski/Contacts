@@ -37,7 +37,7 @@
             <li><a href="/contacts">Kontakty</a></li>
             <c:choose>
                 <c:when test="${not empty user}">
-                    <li><a href="/addContact.jsp">Dodaj nowy wpis</a></li>
+                    <li><a href="/form.jsp">Dodaj nowy wpis</a></li>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>

@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         if (areFieldsEmpty(req, resp) || !loginUser(req, resp)) { //if user has left empty fields or login failed - stop servlet
             return;
         }
-            resp.sendRedirect("/index.jsp");
+        resp.sendRedirect("/index.jsp");
     }
 
     private boolean areFieldsEmpty(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
