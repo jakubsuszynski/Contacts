@@ -36,29 +36,29 @@
         ${errorMessage}
         <%--form for all data--%>
         <form action="/persist" method="POST" id="addForm">
-
+            <%--name--%>
             <div class="form-group">
                 <label>Imię: </label>
                 <input type="text" class="form-control" name="name" required value="${contact.name}">
             </div>
-
+            <%--surname--%>
             <div class="form-group">
                 <label>Nazwisko: </label>
                 <input type="text" class="form-control" name="surname" required value="${contact.surname}">
             </div>
-
+            <%--email--%>
             <div class="form-group">
                 <label>Email: </label>
                 <input type="email" class="form-control" name="email" required value="${contact.email}">
             </div>
-
+            <%--password--%>
             <div class="form-group">
                 <label>Hasło: </label>
                 <p id="passwordStrengthText" class="constraint"></p>
                 <input id="password" type="text" class="form-control" name="password" required
                        value="${contact.password}">
             </div>
-
+            <%--category--%>
             <div class="form-group">
                 Kategoria:
                 <label>Słuzbowy </label><input type="radio" name="category" id="business" value="Sluzbowy">
@@ -66,13 +66,14 @@
                 <label>Inny </label><input type="radio" name="category" id="other" value="Inny" checked>
             </div>
 
-
+            <%--subcategory--%>
             <div class="form-group">
-                <%--when business contact choosen - display only business subcategories--%>
-                <p id="subcategoryLabel">Podkategoria: </p>
 
+                <p id="subcategoryLabel">Podkategoria: </p>
+                <%--default value for "other" subctegory--%>
+                <input id="default" type="text" class="form-control" name="subcategory" hidden value="-"/>
+                <%--when business contact choosen - display only business subcategories--%>
                 <select id="businessSubcategory" name="subcategory" hidden>
-                    <option value="" hidden></option>
                     <option value="Klient">Klient</option>
                     <option value="Szef">Szef</option>
                     <option value="Kierowca">Kierowca</option>
@@ -81,17 +82,17 @@
                 <input id="privateText" type="text" class="form-control" name="subcategory" hidden
                        value="${contact.subcategory}"/>
 
-                <input id="default" type="text" class="form-control" name="subcategory" hidden value=""/>
+
             </div>
 
-
+            <%--telephone--%>
             <div class="form-group">
                 <label>Numer telefonu: </label>
                 <p id="telephoneText" class="constraint"></p>
                 <input id="telephone" type="text" class="form-control" name="telephone" required
                        value="${contact.telephone}">
             </div>
-
+            <%--date of birth--%>
             <div class="form-group">
                 <label>Data urodzenia: </label>
                 <input type="date" class="form-control" name="dob" required value="${contact.dob}">
@@ -101,7 +102,10 @@
         </form>
 
     </div>
-    <a href="/index.jsp">Wróć do strony głównej</a>
+    <ul>
+        <li><a href="/contacts">Kontakty</a></li>
+        <li><a href="/index.jsp">Wróć do strony głównej</a></li>
+    </ul>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

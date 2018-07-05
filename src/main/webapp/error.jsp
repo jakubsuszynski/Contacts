@@ -33,11 +33,14 @@
     <div class="content">
         ${message}
         ${errorMessage}
-        Wystąpił błąd. <a href="/index.jsp">Wróć do strony głównej</a>
+        <ul>
+            <li>Wystąpił błąd.</li>
+            <li><a href="/contacts">Kontakty</a></li>
+            <li><a href="/index.jsp">Wróć do strony głównej</a></li>
+        </ul>
 
     </div>
 </div>
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

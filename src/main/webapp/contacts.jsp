@@ -33,10 +33,10 @@
         <%--If user is logged in - show options to modify contacts base. If not - don't display them. User was set in session during loging in.--%>
 
         <c:forEach var="entry" items="${contacts}">
-            <details>
+            <details id="contact">
                 <summary>
-                    <span class="toHide" name="name">${entry.name} </span>
-                    <span class="toHide" name="surname">${entry.surname} </span>
+                    <span name="name">${entry.name} </span>
+                    <span name="surname">${entry.surname} </span>
                 </summary>
 
 
@@ -60,17 +60,23 @@
                     </c:choose>
                 </ul>
             </details>
+
+            <%--<div id="editContact" hidden>--%>
+                <%--<label></label>--%>
+<%----%>
+            <%--</div>--%>
         </c:forEach>
 
         <ul>
             <c:choose>
                 <c:when test="${not empty user}">
-                    <li><a href="/form.jsp">Dodaj nowy wpis</a></li>
+                    <li><a href="
+        /form.jsp">Dodaj nowy wpis</a></li>
                 </c:when>
                 <c:otherwise>
                 </c:otherwise>
             </c:choose>
-            <li><a href="/contacts">Kontakty</a></li>
+
             <li><a href="/index.jsp">Wróć do strony głównej</a></li>
         </ul>
 

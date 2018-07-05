@@ -46,7 +46,10 @@
             <button type="submit" class="btn btn-primary">Zaloguj</button>
         </form>
 
-        <a href="/index.jsp">Wróć do strony głównej</a>
+        <ul>
+            <li><a href="/contacts">Kontakty</a></li>
+            <li><a href="/index.jsp">Wróć do strony głównej</a></li>
+        </ul>
 
     </div>
 </div>
