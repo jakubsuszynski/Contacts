@@ -60,8 +60,8 @@
             </div>
 
             <div class="form-group">
-              Kategoria:
-               <label>Słuzbowy </label><input type="radio" name="category" id="business" value="Sluzbowy">
+                Kategoria:
+                <label>Słuzbowy </label><input type="radio" name="category" id="business" value="Sluzbowy">
                 <label>Prywatny </label><input type="radio" name="category" id="private" value="Prywatny">
                 <label>Inny </label><input type="radio" name="category" id="other" value="Inny" checked>
             </div>
@@ -71,7 +71,7 @@
                 <%--when business contact choosen - display only business subcategories--%>
                 <p id="subcategoryLabel">Podkategoria: </p>
 
-                <select id="businessSubcategory" name="subcategory" hidden >
+                <select id="businessSubcategory" name="subcategory" hidden>
                     <option value="" hidden></option>
                     <option value="Klient">Klient</option>
                     <option value="Szef">Szef</option>

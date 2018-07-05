@@ -1,15 +1,18 @@
+body{
+    background: whitesmoke;
+}
+
 ul {
     list-style: none;
 }
 
-#constraint {
-    color: red;
-}
-
 .container {
-    /*padding-top: 5%;*/
+    padding-top: 1%;
 }
-
 .content {
-    /*padding-top: 5%;*/
+    padding-top: 5%;
+
+}
+.navbar{
+    background: white;
 }

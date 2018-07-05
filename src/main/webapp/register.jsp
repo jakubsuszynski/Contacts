@@ -39,9 +39,10 @@
             </div>
             <div class="form-group">
                 <label>Hasło</label>
-                <input type="password" class="form-control" name="password" required>
+                <p id="passwordStrengthText"></p>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            <button type="submit" id="registerButton" class="btn btn-primary">Zarejestruj</button>
         </form>
         <a href="/index.jsp">Wróć do strony głównej</a>
     </div>
@@ -53,5 +54,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="scripts/addingContacts.js"></script>
 </body>
 </html>

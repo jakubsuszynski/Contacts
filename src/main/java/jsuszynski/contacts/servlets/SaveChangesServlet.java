@@ -22,6 +22,7 @@ public class SaveChangesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         addContact(req, resp);
+        req.setAttribute("message", "Kontakt dodany");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
         requestDispatcher.forward(req, resp);
     }

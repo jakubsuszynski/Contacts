@@ -27,7 +27,7 @@
         </c:choose>
     </div>
     <div class="content">
-        <h3>Kontakty</h3>
+        <h3>Spis kontaktów</h3>
         ${message}
         ${errorMessage}
         <%--If user is logged in - show options to modify contacts base. If not - don't display them. User was set in session during loging in.--%>
