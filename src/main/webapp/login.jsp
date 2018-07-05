@@ -32,8 +32,9 @@
     <div class="content">
 
         <h3>Login</h3>
-        ${message}
-        ${errorMessage}
+
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label>Login</label>

@@ -30,8 +30,9 @@
     </div>
     <div class="content">
         <h2>Rejestracja</h2>
-        ${message}
-        ${errorMessage}
+
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <form action="/register" method="POST">
             <div class="form-group">
                 <label>Login</label>
@@ -39,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label>Hasło</label>
-                <p id="passwordStrengthText"></p>
+                <p class="constraint" id="passwordStrengthText"></p>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" id="registerButton" class="btn btn-primary">Zarejestruj</button>

@@ -3,11 +3,20 @@ var telephone = $('#telephone');
 var registerButton = $('#registerButton');
 var text = $('#passwordStrengthText');
 var telephoneText = $('#telephoneText');
-var value = password.val();
-if (value === "") {
-    registerButton.prop('disabled', true);
-}
 
+var passwordFlag = false;
+var telephoneFlag = false;
+
+registerButton.prop('disabled', true);
+
+check = function () {
+    if (passwordFlag && telephoneFlag) {
+        registerButton.prop('disabled', false);
+    }
+    else{
+        registerButton.prop('disabled', true);
+    }
+}
 //password length security
 password.on('input', function () {
     var value = $(this).val();
@@ -16,12 +25,14 @@ password.on('input', function () {
 
     if (!passwordPattern.test(value)) {
         text.html("Hasło musi zawierać co najmniej jedną wielką literę i cyfrę oraz składać się z 8 znaków");
-        registerButton.prop('disabled', true);
+        passwordFlag = false;
     }
     else {
         text.html("");
-        registerButton.prop('disabled', false);
+        passwordFlag = true;
     }
+    check();
+
 
 });
 //check telephone requirements
@@ -32,14 +43,17 @@ telephone.on('input', function () {
 
     if (!numberPattern.test(value)) {
         telephoneText.html("Numer telefonu musi składać się z przynajmniej 4 cyfr.");
-        registerButton.prop('disabled', true);
+        telephoneFlag = false;
+
     }
     else {
         telephoneText.html("");
-        registerButton.prop('disabled', false);
+        telephoneFlag = true;
     }
 
+    check();
 });
+
 
 //hiding subcategories, depending on which category is chosen
 

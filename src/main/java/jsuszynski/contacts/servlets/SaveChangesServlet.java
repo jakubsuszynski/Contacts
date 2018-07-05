@@ -22,8 +22,8 @@ public class SaveChangesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         addContact(req, resp);
-        req.setAttribute("message", "Kontakt dodany");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
+        req.setAttribute("message", "Kontakt zapisany");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/contacts.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -37,9 +37,6 @@ public class SaveChangesServlet extends HttpServlet {
             contact = contactOptional.get();
         } else {
             //in the other way we are creating new Contact, but firstly it's necessary to check if provided email exists in database.
-            if (checkIfExists(req, resp)) {
-                return;
-            }
             contact = new Contact();
         }
         contact.setCategory(req.getParameter("category"));
@@ -57,19 +54,7 @@ public class SaveChangesServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
             requestDispatcher.forward(req, resp);
         }
+        req.getSession().removeAttribute("contact");
     }
 
-    private boolean checkIfExists(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (doesEmailExist(req.getParameter("email"))) {
-            req.setAttribute("errorMessage", "Email znajduje się już w bazie kontaktów");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
-            requestDispatcher.forward(req, resp);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean doesEmailExist(String email) {
-        return Optional.ofNullable(contactsRepository.findByEmail(email)).isPresent();
-    }
 }

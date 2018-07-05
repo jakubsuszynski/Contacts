@@ -32,8 +32,9 @@
     </div>
     <div class="content">
         <h3>Menu</h3>
-        ${message}
-        ${errorMessage}
+
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <ul>
             <li><a href="/contacts">Kontakty</a></li>
             <c:choose>

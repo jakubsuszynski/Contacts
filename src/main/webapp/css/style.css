@@ -16,3 +16,6 @@ ul {
 .navbar{
     background: white;
 }
+.constraint{
+    color: red; !important;
+}

@@ -32,8 +32,9 @@
     <div class="content">
         <h3>Dodaj kontakt</h3>
         <%--place for optional messages--%>
-        ${message}
-        ${errorMessage}
+
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <%--form for all data--%>
         <form action="/persist" method="POST" id="addForm">
             <%--name--%>
@@ -69,9 +70,8 @@
             <%--subcategory--%>
             <div class="form-group">
 
-                <p id="subcategoryLabel">Podkategoria: </p>
-                <%--default value for "other" subctegory--%>
-                <input id="default" type="text" class="form-control" name="subcategory" hidden value="-"/>
+                <p  id="subcategoryLabel">Podkategoria: </p>
+
                 <%--when business contact choosen - display only business subcategories--%>
                 <select id="businessSubcategory" name="subcategory" hidden>
                     <option value="Klient">Klient</option>
@@ -81,14 +81,15 @@
                 <%--... or type your own subcategory, if user has chosen private contact--%>
                 <input id="privateText" type="text" class="form-control" name="subcategory" hidden
                        value="${contact.subcategory}"/>
-
+                <%--default value for "other" subctegory--%>
+                <input id="default" type="text" class="form-control" name="subcategory" hidden value="-"/>
 
             </div>
 
             <%--telephone--%>
             <div class="form-group">
                 <label>Numer telefonu: </label>
-                <p id="telephoneText" class="constraint"></p>
+                <p class="constraint" id="telephoneText"></p>
                 <input id="telephone" type="text" class="form-control" name="telephone" required
                        value="${contact.telephone}">
             </div>
@@ -117,5 +118,6 @@
 
 
 <script src="scripts/addingContacts.js"></script>
+<script src="scripts/checkSubcategory.js"></script>
 </body>
 </html>

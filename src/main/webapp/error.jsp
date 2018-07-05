@@ -31,8 +31,8 @@
         </c:choose>
     </div>
     <div class="content">
-        ${message}
-        ${errorMessage}
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <ul>
             <li>Wystąpił błąd.</li>
             <li><a href="/contacts">Kontakty</a></li>

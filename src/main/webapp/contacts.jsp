@@ -28,8 +28,9 @@
     </div>
     <div class="content">
         <h3>Spis kontaktów</h3>
-        ${message}
-        ${errorMessage}
+
+        <div class="constraint">${message}
+            ${errorMessage}</div>
         <%--If user is logged in - show options to modify contacts base. If not - don't display them. User was set in session during loging in.--%>
 
         <c:forEach var="entry" items="${contacts}">
@@ -62,8 +63,8 @@
             </details>
 
             <%--<div id="editContact" hidden>--%>
-                <%--<label></label>--%>
-<%----%>
+            <%--<label></label>--%>
+            <%----%>
             <%--</div>--%>
         </c:forEach>
 
