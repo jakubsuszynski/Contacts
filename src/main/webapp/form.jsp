@@ -66,13 +66,12 @@
                 <label>Prywatny </label><input type="radio" name="category" id="private" value="Prywatny">
                 <label>Inny </label><input type="radio" name="category" id="other" value="Inny" checked>
             </div>
-
             <%--subcategory--%>
             <div class="form-group">
-
-                <p  id="subcategoryLabel">Podkategoria: </p>
-
                 <%--when business contact choosen - display only business subcategories--%>
+                <p id="subcategoryLabel">Podkategoria: </p>
+                <input id="default" type="text" class="form-control" name="subcategory" value="-" hidden>
+
                 <select id="businessSubcategory" name="subcategory" hidden>
                     <option value="Klient">Klient</option>
                     <option value="Szef">Szef</option>
@@ -80,16 +79,15 @@
                 </select>
                 <%--... or type your own subcategory, if user has chosen private contact--%>
                 <input id="privateText" type="text" class="form-control" name="subcategory" hidden
-                       value="${contact.subcategory}"/>
-                <%--default value for "other" subctegory--%>
-                <input id="default" type="text" class="form-control" name="subcategory" hidden value="-"/>
+                       value="${contact.subcategory}">
 
             </div>
+
 
             <%--telephone--%>
             <div class="form-group">
                 <label>Numer telefonu: </label>
-                <p class="constraint" id="telephoneText"></p>
+                <p id="telephoneText" class="constraint"></p>
                 <input id="telephone" type="text" class="form-control" name="telephone" required
                        value="${contact.telephone}">
             </div>

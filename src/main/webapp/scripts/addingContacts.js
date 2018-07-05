@@ -6,17 +6,17 @@ var telephoneText = $('#telephoneText');
 
 var passwordFlag = false;
 var telephoneFlag = false;
-
 registerButton.prop('disabled', true);
-
+// if()
 check = function () {
     if (passwordFlag && telephoneFlag) {
         registerButton.prop('disabled', false);
     }
-    else{
+    else {
         registerButton.prop('disabled', true);
     }
-}
+};
+check(); //todo - repair editing where proper telephone and password has to be 'touched' to unlock the button
 //password length security
 password.on('input', function () {
     var value = $(this).val();
@@ -54,23 +54,4 @@ telephone.on('input', function () {
     check();
 });
 
-
-//hiding subcategories, depending on which category is chosen
-
-$('#subcategoryLabel').prop('hidden', true);
-$('#business').click(function () {
-    $('#businessSubcategory').prop('hidden', false);
-    $('#privateText').prop('hidden', true).prop('required', false);
-    $('#subcategoryLabel').prop('hidden', false);
-});
-$('#private').click(function () {
-    $('#businessSubcategory').prop('hidden', true);
-    $('#privateText').prop('hidden', false).prop('required', true);
-    $('#subcategoryLabel').prop('hidden', false);
-});
-$('#other').click(function () {
-    $('#businessSubcategory').prop('hidden', true);
-    $('#subcategoryLabel').prop('hidden', true);
-    $('#privateText').prop('hidden', true).prop('required', false);
-});
 
