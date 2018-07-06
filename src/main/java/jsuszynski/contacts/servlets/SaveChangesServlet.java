@@ -5,6 +5,7 @@ import jsuszynski.contacts.repository.ContactsRepository;
 import jsuszynski.contacts.tools.RequirementsUtil;
 
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,9 @@ public class SaveChangesServlet extends HttpServlet {
                 return;
 
             addContact(req, resp);
-            RequirementsUtil.redirect(req, resp, "Kontakt zapisany");
+            req.setAttribute("message", "Kontakt zapisany");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
+            requestDispatcher.forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
