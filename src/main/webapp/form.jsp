@@ -17,7 +17,7 @@
 <div class="container">
     <h2>Kontakty</h2>
     <div class="navbar">
-        <%--check if user logged in and display his login--%>
+        <%--checkRequirements if user logged in and display his login--%>
         <c:choose>
             <c:when test="${not empty user}">
                 Zalogowano jako ${user.login}

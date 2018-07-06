@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
 
     private boolean areFieldsEmpty(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (req.getParameter("login").isEmpty() //check if user has left some fields empty
+        if (req.getParameter("login").isEmpty() //checkRequirements if user has left some fields empty
                 || req.getParameter("password").isEmpty()) {
 
             req.setAttribute("errorMessage", "Wypełnij wszystkie pola");
@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 
     private boolean doesUserExist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (usersRepository.doesExist(req.getParameter("login"))) { //check if user already exists
+        if (usersRepository.doesExist(req.getParameter("login"))) { //checkRequirements if user already exists
 
 
             req.setAttribute("errorMessage", "Użytkownik z podanym loginem istnieje");

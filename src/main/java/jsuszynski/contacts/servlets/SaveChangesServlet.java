@@ -36,7 +36,7 @@ public class SaveChangesServlet extends HttpServlet {
         if (contactOptional.isPresent()) {
             contact = contactOptional.get();
         } else {
-            //in the other way we are creating new Contact, but firstly it's necessary to check if provided email exists in database.
+            //in the other way we are creating new Contact, but firstly it's necessary to checkRequirements if provided email exists in database.
             contact = new Contact();
         }
         contact.setCategory(req.getParameter("category"));
