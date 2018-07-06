@@ -21,6 +21,18 @@ public class LoginServlet extends HttpServlet {
     @Inject
     private UsersRepository usersRepository;
 
+    private boolean loginUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        try {
+            req.login(req.getParameter(LOGIN_PARAM), req.getParameter(PASSWORD_PARAM)); //login user and set him in session
+            req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter(LOGIN_PARAM)));
+        } catch (ServletException e) {
+            redirect(req, resp, "Niepoprawny login lub hasło");
+            return false;
+        }
+        return true;
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
@@ -40,18 +52,6 @@ public class LoginServlet extends HttpServlet {
             return true;
         }
         return false;
-    }
-
-    private boolean loginUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        try {
-            req.login(req.getParameter(LOGIN_PARAM), req.getParameter(PASSWORD_PARAM)); //login user and set him in session
-            req.getSession().setAttribute("user", usersRepository.findUserByLogin(req.getParameter(LOGIN_PARAM)));
-        } catch (ServletException e) {
-            redirect(req, resp, "Niepoprawny login lub hasło");
-            return false;
-        }
-        return true;
     }
 
     private void redirect(HttpServletRequest req, HttpServletResponse resp, String message) throws ServletException, IOException {

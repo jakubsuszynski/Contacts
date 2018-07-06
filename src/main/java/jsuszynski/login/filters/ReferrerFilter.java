@@ -23,10 +23,11 @@ public class ReferrerFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
         //if logged user tries to login or register - redirect him
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
-        if (req.getRequestURL().toString().contains("login.jsp") || req.getRequestURL().toString().contains("register.jsp")) {
+        if (req.getRequestURL().toString().contains("login") || req.getRequestURL().toString().contains("register")) {
             Optional<User> loggedUser = Optional.ofNullable((User)req.getSession().getAttribute("user"));
             if (loggedUser.isPresent()) {
                 resp.sendRedirect("error.jsp");
