@@ -4,21 +4,17 @@ var registerButton = $('#registerButton');
 var passwordText = $('#passwordStrengthText');
 var telephoneText = $('#telephoneText');
 
-var passwordFlag = false;
-var telephoneFlag = false;
 registerButton.prop('disabled', true);
 
 //define methods which are checking fields
 var checkPassword = function () {
     var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    ;
     return passwordPattern.test(password.val());
 };
 
 
 var checkTelephone = function () {
     var numberPattern = /^(?=.*\d)[0-9]{4,}$/;
-    ;
     return numberPattern.test(telephone.val());
 };
 
@@ -47,11 +43,10 @@ var checkRequirements = function () {
     }
 };
 
-//first scan
+
 
 registerButton.prop('disabled', true);
-// checkRequirements();
-
+checkRequirements();
 
 $('#password, #telephone').on('input', function () {
     checkRequirements()

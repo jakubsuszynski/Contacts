@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!doctype html>
 <html lang="pl">
 <head>
@@ -29,22 +29,27 @@
         </c:choose>
     </div>
     <div class="content">
-        <h2>Rejestracja</h2>
+        <h3>Rejestracja</h3>
 
-        <div class="constraint">${message}
-            ${errorMessage}</div>
+        <div class="message">${message}</div>
+
         <form action="/register" method="POST">
+
             <div class="form-group">
                 <label>Login</label>
                 <input type="text" class="form-control" name="login" required>
             </div>
+
             <div class="form-group">
                 <label>Hasło</label>
-                <p class="constraint" id="passwordStrengthText"></p>
+                <%--place for error message--%>
+                <p class="message" id="passwordStrengthText"></p>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
+
             <button type="submit" id="registerButton" class="btn btn-primary">Zarejestruj</button>
         </form>
+
         <ul>
             <li><a href="/contacts">Kontakty</a></li>
             <li><a href="/index.jsp">Wróć do strony głównej</a></li>
@@ -52,12 +57,9 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="scripts/addingContacts.js"></script>
+<script src="scripts/registerRequirements.js"></script>
 </body>
 </html>

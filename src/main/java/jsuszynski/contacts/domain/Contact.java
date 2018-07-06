@@ -28,17 +28,6 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(String name, String surname, String email, String password, String category, String subcategory, String telephone, LocalDate dob) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.category = category;
-        this.subcategory = subcategory;
-        this.telephone = telephone;
-        this.dob = dob;
-    }
-
     public Long getId() {
         return id;
     }

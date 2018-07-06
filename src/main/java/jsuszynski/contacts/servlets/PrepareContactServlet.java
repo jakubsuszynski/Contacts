@@ -5,25 +5,27 @@ import jsuszynski.contacts.repository.ContactsRepository;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet("/prepareContact")
 public class PrepareContactServlet extends HttpServlet {
     @Inject
-    ContactsRepository contactsRepository;
+    private ContactsRepository contactsRepository;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
         Contact contact = contactsRepository.findById(Long.parseLong(req.getParameter("id")));
 
         req.getSession().setAttribute("contact", contact);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
-        requestDispatcher.forward(req, resp);
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Singleton
-public class ContactsRepositoryDB implements ContactsRepository {
+public class ContactsRepositoryMySQL implements ContactsRepository {
     @PersistenceContext(unitName = "contacts")
     private EntityManager entityManager;
 

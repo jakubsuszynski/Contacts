@@ -2,9 +2,9 @@ package jsuszynski.contacts.servlets;
 
 import jsuszynski.contacts.domain.Contact;
 import jsuszynski.contacts.repository.ContactsRepository;
+import jsuszynski.contacts.tools.RequirementsUtil;
 
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +17,20 @@ import java.util.Optional;
 @WebServlet("/persist")
 public class SaveChangesServlet extends HttpServlet {
     @Inject
-    ContactsRepository contactsRepository;
+    private ContactsRepository contactsRepository;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        addContact(req, resp);
-        req.setAttribute("message", "Kontakt zapisany");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/contacts.jsp");
-        requestDispatcher.forward(req, resp);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            if (RequirementsUtil.checkEmail(req, resp) || RequirementsUtil.checkPassword(req, resp) || RequirementsUtil.checkTelephone(req, resp))
+                return;
+
+            addContact(req, resp);
+            RequirementsUtil.redirect(req, resp, "Kontakt zapisany");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -33,12 +39,17 @@ public class SaveChangesServlet extends HttpServlet {
         //if optional object exists it means Contact is goind to be modified - we don't create new one
         Optional<Contact> contactOptional = Optional.ofNullable((Contact) req.getSession().getAttribute("contact"));
 
-        if (contactOptional.isPresent()) {
-            contact = contactOptional.get();
-        } else {
-            //in the other way we are creating new Contact, but firstly it's necessary to checkRequirements if provided email exists in database.
-            contact = new Contact();
+        contact = contactOptional.orElseGet(Contact::new);
+        setParams(req, contact);
+        try {
+            contactsRepository.persist(contact);
+        } catch (Exception e) {
+            RequirementsUtil.redirect(req, resp, "Email zajęty");
         }
+        req.getSession().removeAttribute("contact");
+    }
+
+    private void setParams(HttpServletRequest req, Contact contact) {
         contact.setCategory(req.getParameter("category"));
         contact.setDob(LocalDate.parse(req.getParameter("dob")));
         contact.setEmail(req.getParameter("email"));
@@ -47,14 +58,6 @@ public class SaveChangesServlet extends HttpServlet {
         contact.setSurname(req.getParameter("surname"));
         contact.setTelephone(req.getParameter("telephone"));
         contact.setPassword(req.getParameter("password"));
-        try {
-            contactsRepository.persist(contact);
-        } catch (Exception e) {
-            req.setAttribute("errorMessage", "Email zajęty");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/form.jsp");
-            requestDispatcher.forward(req, resp);
-        }
-        req.getSession().removeAttribute("contact");
     }
 
 }

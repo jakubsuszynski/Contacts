@@ -14,17 +14,15 @@ public class Role {
     private String user_login;
     private String user_role;
     private String role_group;
-    private Long user_id;
 
 
     public Role() {
     }
 
-    public Role(String user_login, String user_role, String role_group, Long user_id) {
+    public Role(String user_login, String user_role, String role_group) {
         this.user_login = user_login;
         this.user_role = user_role;
         this.role_group = role_group;
-        this.user_id = user_id;
     }
 
     public void setUser_login(String user_login) {
@@ -39,9 +37,6 @@ public class Role {
         this.role_group = role_group;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 
     public Long getId() {
         return id;
@@ -59,7 +54,4 @@ public class Role {
         return role_group;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
 }
