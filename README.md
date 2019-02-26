@@ -4,7 +4,7 @@ Simple shared contacts list with login system written in Java EE
 
 ### Prerequisites
 
-Application requires SQL database defined as datasource in WildFly server applicatio
+Application requires SQL database defined as datasource in WildFly server application
 
 ## Deployment
 
